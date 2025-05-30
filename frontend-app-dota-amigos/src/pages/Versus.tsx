@@ -21,77 +21,83 @@ const teamRight = [
 
 export default function Versus() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">Versus Match</h1>
-          <p className="text-slate-300">Equipos listos para la batalla</p>
+    <div className="h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4 overflow-hidden">
+      <div className="h-full max-w-7xl mx-auto flex flex-col">
+        {/* Header */}
+        <div className="text-center mb-4 flex-shrink-0">
+          <h1 className="text-3xl font-bold text-white mb-1">Versus Match</h1>
+          <p className="text-slate-300 text-sm">Equipos listos para la batalla</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 items-center">
+        {/* Main content */}
+        <div className="flex-1 grid md:grid-cols-3 gap-4 items-center min-h-0">
           {/* Equipo Izquierdo */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-center text-red-400 mb-6">
+          <div className="h-full flex flex-col">
+            <h2 className="text-xl font-bold text-center text-red-400 mb-3 flex-shrink-0">
               Team Radiant
             </h2>
-            {teamLeft.map((player) => (
-              <Card key={player.id} className="bg-red-900/20 border-red-500/30 hover:bg-red-900/30 transition-colors">
-                <CardContent className="p-4">
-                  <div className="flex items-center space-x-3">
-                    <Avatar className="h-12 w-12 border-2 border-red-400">
-                      <AvatarImage src={player.avatar} alt={player.name} />
-                      <AvatarFallback className="bg-red-700 text-white">
-                        {player.name.charAt(0)}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1">
-                      <p className="font-semibold text-white">{player.name}</p>
-                      <p className="text-sm text-slate-300">{player.hero}</p>
+            <div className="flex-1 space-y-2 overflow-y-auto pr-2">
+              {teamLeft.map((player) => (
+                <Card key={player.id} className="bg-red-900/20 border-red-500/30 hover:bg-red-900/30 transition-colors flex-shrink-0">
+                  <CardContent className="p-3">
+                    <div className="flex items-center space-x-3">
+                      <Avatar className="h-10 w-10 border-2 border-red-400 flex-shrink-0">
+                        <AvatarImage src={player.avatar} alt={player.name} />
+                        <AvatarFallback className="bg-red-700 text-white text-sm">
+                          {player.name.charAt(0)}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-semibold text-white text-sm truncate">{player.name}</p>
+                        <p className="text-xs text-slate-300 truncate">{player.hero}</p>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
 
           {/* VS Central */}
-          <div className="text-center">
-            <div className="relative">
-              <div className="w-32 h-32 mx-auto bg-gradient-to-r from-red-500 to-blue-500 rounded-full flex items-center justify-center shadow-2xl">
-                <span className="text-4xl font-bold text-white">VS</span>
+          <div className="text-center flex flex-col justify-center flex-shrink-0">
+            <div className="relative mb-4">
+              <div className="w-24 h-24 mx-auto bg-gradient-to-r from-red-500 to-blue-500 rounded-full flex items-center justify-center shadow-2xl">
+                <span className="text-2xl font-bold text-white">VS</span>
               </div>
-              <div className="absolute -top-2 -left-2 w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
-              <div className="absolute -bottom-2 -right-2 w-3 h-3 bg-yellow-300 rounded-full animate-pulse delay-75"></div>
-              <div className="absolute top-1/2 -left-4 w-2 h-2 bg-yellow-200 rounded-full animate-pulse delay-150"></div>
+              <div className="absolute -top-1 -left-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+              <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-yellow-300 rounded-full animate-pulse delay-75"></div>
+              <div className="absolute top-1/2 -left-3 w-1.5 h-1.5 bg-yellow-200 rounded-full animate-pulse delay-150"></div>
             </div>
-            <Button className="mt-6 bg-gradient-to-r from-red-600 to-blue-600 hover:from-red-700 hover:to-blue-700">
+            <Button className="bg-gradient-to-r from-red-600 to-blue-600 hover:from-red-700 hover:to-blue-700 text-sm px-6 py-2">
               Iniciar Partida
             </Button>
           </div>
 
           {/* Equipo Derecho */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-center text-blue-400 mb-6">
+          <div className="h-full flex flex-col">
+            <h2 className="text-xl font-bold text-center text-blue-400 mb-3 flex-shrink-0">
               Team Dire
             </h2>
-            {teamRight.map((player) => (
-              <Card key={player.id} className="bg-blue-900/20 border-blue-500/30 hover:bg-blue-900/30 transition-colors">
-                <CardContent className="p-4">
-                  <div className="flex items-center space-x-3">
-                    <Avatar className="h-12 w-12 border-2 border-blue-400">
-                      <AvatarImage src={player.avatar} alt={player.name} />
-                      <AvatarFallback className="bg-blue-700 text-white">
-                        {player.name.charAt(0)}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1">
-                      <p className="font-semibold text-white">{player.name}</p>
-                      <p className="text-sm text-slate-300">{player.hero}</p>
+            <div className="flex-1 space-y-2 overflow-y-auto pl-2">
+              {teamRight.map((player) => (
+                <Card key={player.id} className="bg-blue-900/20 border-blue-500/30 hover:bg-blue-900/30 transition-colors flex-shrink-0">
+                  <CardContent className="p-3">
+                    <div className="flex items-center space-x-3">
+                      <Avatar className="h-10 w-10 border-2 border-blue-400 flex-shrink-0">
+                        <AvatarImage src={player.avatar} alt={player.name} />
+                        <AvatarFallback className="bg-blue-700 text-white text-sm">
+                          {player.name.charAt(0)}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-semibold text-white text-sm truncate">{player.name}</p>
+                        <p className="text-xs text-slate-300 truncate">{player.hero}</p>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </div>

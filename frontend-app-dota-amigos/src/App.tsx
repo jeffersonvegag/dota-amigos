@@ -3,6 +3,7 @@ import { SidebarProvider } from '@/components/ui/sidebar'
 import { AppSidebar } from '@/components/layout/AppSidebar'
 import Home from '@/pages/Home'
 import Versus from '@/pages/Versus'
+import RickAndMorty from '@/pages/Rick&Morty'
 import './App.css'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/versus" element={<Versus />} />
+              <Route path="/rickandmorty" element ={<RickAndMorty />}/>
             </Routes>
           </main>
         </div>

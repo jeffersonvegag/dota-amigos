@@ -1,5 +1,5 @@
-import { Home, Swords } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Home, Laugh, Swords } from "lucide-react"
+import { Link, useLocation } from "react-router-dom"
 
 import {
   Sidebar,
@@ -23,9 +23,16 @@ const items = [
     url: "/versus",
     icon: Swords,
   },
+    {
+    title: "Rick & Morty Test",
+    url: "/rickandmorty",
+    icon: Laugh,
+  },
 ]
 
 export function AppSidebar() {
+  const location = useLocation()
+
   return (
     <Sidebar className="border-r">
       <SidebarContent>
@@ -37,7 +44,7 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild isActive={location.pathname === item.url}>
                     <Link to={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
